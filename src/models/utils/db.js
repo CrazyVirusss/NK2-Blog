@@ -6,7 +6,7 @@ import config from '../../config'
 
 const db = mysql.createConnection(config.db);
 
-db.connect(function (err) {
+db.connect((err) => {
     if (err) {
         console.log("连接失败" + err);
     } else {

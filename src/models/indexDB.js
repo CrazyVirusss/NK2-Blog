@@ -9,7 +9,7 @@ let data = {
     name:''
 }
 
-db.query('select * from test where id = 2', function (err, res) {
+db.query('select * from test where id = 2', (err, res) => {
   if (err) throw err;
   if (res) {
     console.log(data)
