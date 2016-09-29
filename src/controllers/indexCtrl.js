@@ -9,7 +9,6 @@ export default async (ctx, next) => {
     name:''
   }
   const db = mysql.createConnection(config.db);
-  let id,name;
 
   await db.connect(function (err) {
     if (err) {
@@ -18,8 +17,7 @@ export default async (ctx, next) => {
       console.log('连接成功！');
     }
   });
-  console.log(db + 'old')
-  console.log(await db.query('select * from test where id = 2', function (err, res) {
+  await db.query('select * from test where id = 2', function (err, res) {
     if (err) throw err;
     if (res) {
       console.log(param)
@@ -27,7 +25,7 @@ export default async (ctx, next) => {
       param.name = res[0].name;
       console.log(param)
     }
-  }))
+  })
   await ctx.render('index', {param});
   await db.end();
 }
